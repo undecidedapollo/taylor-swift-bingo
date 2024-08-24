@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taylor Swift Bingo - 4 Boards</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        height: 10in; /* Adjusted for 0.5in margins */
+        width: 7.5in; /* Adjusted for 0.5in margins */
+      }
+      .container {
+        width: 3.65in;
+        height: 4.9in;
+        padding: 0.1in;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-family: "Bebas Neue", cursive;
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+      .bingo-board {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0;
+        border: 1px solid black;
+        width: 100%;
+        height: calc(99% - 30px); /* Adjust based on h1 height */
+      }
+      .bingo-cell {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        font-size: 0.67rem;
+        line-height: 1.1;
+        overflow: hidden;
+        height: 5.15rem;
+        /* padding: 2px; */
+      }
+      .bingo-cell:nth-child(5n) {
+        border-right: none;
+      }
+      .bingo-cell:nth-child(n + 21) {
+        border-bottom: none;
+      }
+      .center-image {
+        background-image: url("free_spot.png");
+        background-size: cover;
+        background-position: center;
+      }
+      @media screen {
+        body {
+          height: 100vh;
+          width: 100vw;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+    <div class="container">
+      <h1>Taylor Swift Bingo</h1>
+      <div class="bingo-board"></div>
+    </div>
+
+    <script>
+    //     const taylorSwiftSongs = [
+    //       "Picture to Burn",
+    //       "The Outside",
+    //       "I'm Only Me When I'm With You",
+    //       "Mary's Song",
+    //       "Fearless",
+    //       "The Other Side of the Door",
+    //       "Breathe",
+    //       "The Way I Loved You",
+    //       "Mr. Perfectly Fine",
+    //       "Back to December",
+    //       "Mine",
+    //       "Speak Now",
+    //       "Electric Touch",
+    //       "Timeless",
+    //       "The Moment I Knew",
+    //       "Red",
+    //       "Begin Again",
+    //       "I Knew You Were Trouble",
+    //       "Come Back...Be Here",
+    //       "Style",
+    //       "Say Don't Go",
+    //       "Clean",
+    //       '"Slut!"',
+    //       "Don't Blame Me",
+    //       "This Is Why We Can't Have Nice Things",
+    //       "Look What You Made Me Do",
+    //       "Gorgeous",
+    //       "I Forgot That You Existed",
+    //       "London Boy",
+    //       "Daylight",
+    //       "All Of The Girls You Loved Before",
+    //       "Cornelia Street",
+    //       "The 1",
+    //       "August",
+    //       "Invisible String",
+    //       "My Tears Ricochet",
+    //       "Tolerate It",
+    //       "Marjorie",
+    //       "'Tis The Damn Season",
+    //       "Evermore",
+    //       "Maroon",
+    //       "Karma",
+    //       "Paris",
+    //       "Question…?",
+    //       "Hits Different",
+    //       "The Black Dog",
+    //       "The Tortured Poets Department",
+    //       "Guilty as Sin?",
+    //       "But Daddy I Love Him",
+    //       "I'm Gonna Get You Back",
+    //       // "Blank Space",
+    //     ];
+
+    //   const pattern = [
+    //       'O', 'X', 'O', 'O', 'O',
+    //       'O', 'X', 'X', 'X', 'O',
+    //       'O', 'X', 'I', 'O', 'O',
+    //       'O', 'X', 'X', 'X', 'O',
+    //       'O', 'X', 'O', 'O', 'O'
+    //   ];
+
+
+      const taylorSwiftSongs = [
+        "Tim McGraw",
+        "Our Song",
+        "Teardrops On My Guitar",
+        "You Belong With Me",
+        "Crazier",
+        "White Horse",
+        "Fifteen",
+        "Enchanted",
+        "Sparks Fly",
+        "Castles Crumbling",
+        "Long Live",
+        "Ours",
+        "22",
+        "All Too Well",
+        "State Of Grace",
+        "Holy Ground",
+        "We Are Never Ever Getting Back Together",
+        "Is It Over Now?",
+        "Wonderland",
+        "Wildest Dreams",
+        "Welcome To New York",
+        "Delicate",
+        "Getaway Car",
+        "...Ready For It?",
+        "Dancing With Our Hands Tied",
+        "The Archer",
+        "Paper Rings",
+        "Lover",
+        "The Man",
+        "Cruel Summer",
+        "Cardigan",
+        "Betty",
+        "Mirrorball",
+        "The Last Great American Dynasty",
+        "Willow",
+        "Champagne Problems",
+        "Dorothea",
+        "Long Story Short",
+        "Anti-Hero",
+        "Lavender Haze",
+        "Mastermind",
+        "Bejeweled",
+        "Who's Afraid of Little Old Me?",
+        "I Can Do It With A Broken Heart",
+        "Down Bad",
+        "Fortnight",
+        "My Boy Only Breaks His Favorite Toys",
+        "Should've Said No",
+        "King Of My Heart",
+        "Exile",
+        "Midnight Rain",
+        "You're On Your Own, Kid",
+      ];
+
+      const pattern = [
+        "O", "O", "O", "O", "O",
+        "O", "O", "O", "O", "O",
+        "O", "O", "I", "O", "O",
+        "O", "O", "O", "O", "O",
+        "O", "O", "O", "O", "O",
+      ];
+
+    const headerColors = [
+        "gold",
+        "#5CE1E6",
+        "navy",
+        "#CB6CE6",
+        "#C22929",
+        "#404057",
+      ];
+      Array.from(document.getElementsByTagName("h1")).forEach(
+        (h1) =>
+          (h1.style.color =
+            headerColors[Math.floor(Math.random() * headerColors.length)])
+      );
+
+      const pastelColors = [
+        "#B1F3ED",
+        "#A2383D",
+        "#FEF5A9",
+        "#DFAAFA",
+        "#F7CCF6",
+        "#8CD0FC",
+        "#193A77",
+        "#D4D4D4",
+      ];
+
+
+      let songUsageCount = {};
+      let songPositionCount = {};
+      let lastBoardSongs = new Set();
+      let colorIdx = 0;
+
+      function getWeightedRandomSong(availableSongs, position) {
+        const totalWeight = availableSongs.reduce((sum, song) => {
+          const usageWeight = 1 / (songUsageCount[song] || 1);
+          const positionWeight =
+            1 / (songPositionCount[`${song}-${position}`] || 1);
+          return sum + usageWeight * positionWeight;
+        }, 0);
+
+        let random = Math.random() * totalWeight;
+
+        for (const song of availableSongs) {
+          const usageWeight = 1 / (songUsageCount[song] || 1);
+          const positionWeight =
+            1 / (songPositionCount[`${song}-${position}`] || 1);
+          const weight = usageWeight * positionWeight;
+          if (random < weight) return song;
+          random -= weight;
+        }
+
+        return availableSongs[availableSongs.length - 1];
+      }
+
+      function generateBoard(board) {
+        board.innerHTML = "";
+        const availableSongs = taylorSwiftSongs.filter(
+          (song) => !lastBoardSongs.has(song)
+        );
+        const currentColor = pastelColors[colorIdx];
+        colorIdx = (colorIdx + 1) % pastelColors.length;
+        const newBoardSongs = new Set();
+
+        pattern.forEach((cell, index) => {
+          const cellElement = document.createElement("div");
+          cellElement.className = "bingo-cell";
+
+          if (cell === "O") {
+            if (availableSongs.length === 0) {
+              availableSongs.push(
+                ...taylorSwiftSongs.filter((song) => !newBoardSongs.has(song))
+              );
+            }
+            const song = getWeightedRandomSong(availableSongs, index);
+            const songIndex = availableSongs.indexOf(song);
+            availableSongs.splice(songIndex, 1);
+
+            cellElement.textContent = song;
+            cellElement.style.backgroundColor = "white";
+
+            newBoardSongs.add(song);
+            songUsageCount[song] = (songUsageCount[song] || 0) + 1;
+            songPositionCount[`${song}-${index}`] =
+              (songPositionCount[`${song}-${index}`] || 0) + 1;
+          } else if (cell === "X") {
+            cellElement.style.backgroundColor = currentColor;
+          } else if (cell === "I") {
+            cellElement.classList.add("center-image");
+          }
+
+          board.appendChild(cellElement);
+        });
+
+        lastBoardSongs = newBoardSongs;
+      }
+
+      function generateAllBoards() {
+        const boards = document.querySelectorAll(".bingo-board");
+        boards.forEach((board) => generateBoard(board));
+      }
+
+      // Generate initial boards
+      generateAllBoards();
+
+      // Add keyboard event listener
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "g" || event.key === "G") {
+          generateAllBoards();
+        }
+      });
+    </script>
+  </body>
+</html>

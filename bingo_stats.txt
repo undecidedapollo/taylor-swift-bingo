@@ -1,0 +1,6 @@
+Number of boards: 30
+Number of evaluations: 2000
+
+Average: 41.41
+Median: 42
+75th Percentile: 43
