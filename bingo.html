@@ -44,6 +44,7 @@
         border: 1px solid black;
         width: 100%;
         height: calc(99% - 30px); /* Adjust based on h1 height */
+        white-space: pre-line;
       }
       .bingo-cell {
         display: flex;
@@ -401,60 +402,114 @@
     //   ];
 
 
+      // const taylorSwiftSongs = [
+      //   "Tim McGraw",
+      //   "Our Song",
+      //   "Teardrops On My Guitar",
+      //   "You Belong With Me",
+      //   "Crazier",
+      //   "White Horse",
+      //   "Fifteen",
+      //   "Enchanted",
+      //   "Sparks Fly",
+      //   "Castles Crumbling",
+      //   "Long Live",
+      //   "Ours",
+      //   "22",
+      //   "All Too Well",
+      //   "State Of Grace",
+      //   "Holy Ground",
+      //   "We Are Never Ever Getting Back Together",
+      //   "Is It Over Now?",
+      //   "Wonderland",
+      //   "Wildest Dreams",
+      //   "Welcome To New York",
+      //   "Delicate",
+      //   "Getaway Car",
+      //   "...Ready For It?",
+      //   "Dancing With Our Hands Tied",
+      //   "The Archer",
+      //   "Paper Rings",
+      //   "Lover",
+      //   "The Man",
+      //   "Cruel Summer",
+      //   "Cardigan",
+      //   "Betty",
+      //   "Mirrorball",
+      //   "The Last Great American Dynasty",
+      //   "Willow",
+      //   "Champagne Problems",
+      //   "Dorothea",
+      //   "Long Story Short",
+      //   "Anti-Hero",
+      //   "Lavender Haze",
+      //   "Mastermind",
+      //   "Bejeweled",
+      //   "Who's Afraid of Little Old Me?",
+      //   "I Can Do It With A Broken Heart",
+      //   "Down Bad",
+      //   "Fortnight",
+      //   "My Boy Only Breaks His Favorite Toys",
+      //   "Should've Said No",
+      //   "King Of My Heart",
+      //   "Exile",
+      //   "Midnight Rain",
+      //   "You're On Your Own, Kid",
+      // ];
+
       const taylorSwiftSongs = [
-        "Tim McGraw",
-        "Our Song",
-        "Teardrops On My Guitar",
-        "You Belong With Me",
-        "Crazier",
-        "White Horse",
-        "Fifteen",
-        "Enchanted",
-        "Sparks Fly",
-        "Castles Crumbling",
-        "Long Live",
-        "Ours",
-        "22",
-        "All Too Well",
-        "State Of Grace",
-        "Holy Ground",
-        "We Are Never Ever Getting Back Together",
-        "Is It Over Now?",
-        "Wonderland",
-        "Wildest Dreams",
-        "Welcome To New York",
-        "Delicate",
-        "Getaway Car",
-        "...Ready For It?",
-        "Dancing With Our Hands Tied",
-        "The Archer",
-        "Paper Rings",
-        "Lover",
-        "The Man",
-        "Cruel Summer",
-        "Cardigan",
-        "Betty",
-        "Mirrorball",
-        "The Last Great American Dynasty",
-        "Willow",
-        "Champagne Problems",
-        "Dorothea",
-        "Long Story Short",
-        "Anti-Hero",
-        "Lavender Haze",
-        "Mastermind",
-        "Bejeweled",
-        "Who's Afraid of Little Old Me?",
-        "I Can Do It With A Broken Heart",
-        "Down Bad",
-        "Fortnight",
-        "My Boy Only Breaks His Favorite Toys",
-        "Should've Said No",
-        "King Of My Heart",
-        "Exile",
-        "Midnight Rain",
-        "You're On Your Own, Kid",
+        "What Makes You Beautiful\n(One Direction)",
+        "Story of My Life\n(One Direction)",
+        "Drag Me Down\n(One Direction)",
+        "You & I\n(One Direction)",
+        "Perfect\n(One Direction)",
+        "Steal My Girl\n(One Direction)",
+        "Infinity\n(One Direction)",
+        "They Don't Know About Us\n(One Direction)",
+        "Act My Age\n(One Direction)",
+        "As It Was\n(Harry Styles)",
+        "Watermelon Sugar\n(Harry Styles)",
+        "Adore You\n(Harry Styles)",
+        "Sign of the Times\n(Harry Styles)",
+        "Matilda\n(Harry Styles)",
+        "Golden\n(Harry Styles)",
+        "Keep Driving\n(Harry Styles)",
+        "Little Freak\n(Harry Styles)",
+        "Falling\n(Harry Styles)",
+        "Lights Up\n(Harry Styles)",
+        "Waiting On the World to Change\n(John Mayer)",
+        "Your Body Is a Wonderland\n(John Mayer)",
+        "Daughter\n(John Mayer)",
+        "Paper Doll\n(John Mayer)",
+        "Summer\n(Calvin Harris)",
+        "Outside\n(Calvin Harris)",
+        "Feel So Close\n(Calvin Harris)",
+        "How Deep Is Your Love\n(Calvin Harris)",
+        "One Kiss\n(Calvin Harris)",
+        "Waffle House\n(Joe Jonas)",
+        "What A Man Gotta Do\n(Joe Jonas)",
+        "Burnin' Up\n(Joe Jonas)",
+        "Year 3000\n(Joe Jonas)",
+        "Montana Sky\n(Joe Jonas)",
+        "Sucker\n(Joe Jonas)",
+        "S.O.S.\n(Joe Jonas)",
+        "When You Look Me In The Eyes\n(Joe Jonas)",
+        "Lovebug\n(Joe Jonas)",
+        "Wouldn't Change a Thing\n(Joe Jonas)",
+        "This Is Me\n(Joe Jonas)",
+        "About You\n(The 1975)",
+        "Oh Caroline\n(The 1975)",
+        "I'm In Love With You\n(The 1975)",
+        "Love It If We Made It\n(The 1975)",
+        "Chocolate\n(The 1975)",
+        "Robbers\n(The 1975)",
+        "It's Not Living (If It's Not With You)\n(The 1975)",
+        "Somebody Else\n(The 1975)",
       ];
+      Array.from(document.getElementsByTagName("h1")).forEach(
+        (h1) =>
+          (h1.innerText = "Ex-Lovers Bingo")
+      );
 
       const pattern = [
         "O", "O", "O", "O", "O",
@@ -472,11 +527,11 @@
         "#C22929",
         "#404057",
       ];
-      Array.from(document.getElementsByTagName("h1")).forEach(
-        (h1) =>
-          (h1.style.color =
-            headerColors[Math.floor(Math.random() * headerColors.length)])
-      );
+      // Array.from(document.getElementsByTagName("h1")).forEach(
+      //   (h1) =>
+      //     (h1.style.color =
+      //       headerColors[Math.floor(Math.random() * headerColors.length)])
+      // );
 
       const pastelColors = [
         "#B1F3ED",
@@ -550,7 +605,9 @@
           } else if (cell === "X") {
             cellElement.style.backgroundColor = currentColor;
           } else if (cell === "I") {
-            cellElement.classList.add("center-image");
+            // cellElement.classList.add("center-image");
+            cellElement.textContent = "💔";
+            cellElement.style.fontSize = "3rem";
           }
 
           board.appendChild(cellElement);
