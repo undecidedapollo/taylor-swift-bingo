@@ -177,7 +177,11 @@
       const taylor13 = {
         title: "Taylor Swift Music Bingo",
         freespace: "Blank Space",
-        headerColors: taylorColors,
+        headerColors: ["#1E3A5F"],
+        blockedCellColors: [
+          "#BDCFB7", "#E8C490", "#BEA7C4", "#6D3D46", "#C2E2F4",
+          "#EAB4CC", "#CC9D83",
+        ],
         pattern: "13",
         items: [
           "You All Over Me",
@@ -215,6 +219,8 @@
           "Sweeter Than Fiction",
           "Christmas Tree Farm",
           "You're Losing Me",
+          "All Of The Girls You Loved Before",
+          "I Can See You",
         ],
       };
 
@@ -317,6 +323,10 @@
 
           const newBoardSongs = new Set();
 
+          const blockedColor = template.blockedCellColors
+            ? template.blockedCellColors[Math.floor(Math.random() * template.blockedCellColors.length)]
+            : "#E5E5E5";
+
           pattern.forEach((cell, index) => {
             const cellElement = document.createElement("div");
             cellElement.className = "bingo-cell";
@@ -340,7 +350,7 @@
               songPositionCount[`${song}-${index}`] =
                 (songPositionCount[`${song}-${index}`] || 0) + 1;
             } else if (cell === "X") {
-              cellElement.style.backgroundColor = "#E5E5E5";
+              cellElement.style.backgroundColor = blockedColor;
             } else if (cell === "I") {
               cellElement.textContent = template.freespace;
               cellElement.style.fontWeight = "bold";
