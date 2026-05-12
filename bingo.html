@@ -352,8 +352,51 @@
             } else if (cell === "X") {
               cellElement.style.backgroundColor = blockedColor;
             } else if (cell === "I") {
-              cellElement.textContent = template.freespace;
               cellElement.style.fontWeight = "bold";
+              cellElement.style.position = "relative";
+              cellElement.style.overflow = "hidden";
+
+              // Scatter small sparkle stars around the cell
+              const sparkleContainer = document.createElement("div");
+              sparkleContainer.style.position = "absolute";
+              sparkleContainer.style.inset = "0";
+              sparkleContainer.style.pointerEvents = "none";
+
+              const starPoints = "4,0 5,3 8,4 5,5 4,8 3,5 0,4 3,3";
+              const colors = ["#FFD700", "#FFC107", "#FFEB3B", "#FFF176", "#DAA520", "#F5D060"];
+              const positions = [
+                [8, 8, 10], [75, 5, 8], [20, 75, 9], [85, 70, 11], [50, 10, 7],
+                [10, 45, 6], [88, 40, 8], [30, 12, 7], [65, 80, 9], [5, 75, 6],
+                [92, 15, 7], [45, 85, 8], [70, 20, 6], [15, 20, 5], [80, 85, 7],
+                [55, 5, 5], [25, 90, 6], [90, 55, 5], [3, 60, 7], [60, 90, 6],
+              ];
+
+              positions.forEach(([x, y, size]) => {
+                const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                s.setAttribute("viewBox", "0 0 8 8");
+                s.style.position = "absolute";
+                s.style.left = x + "%";
+                s.style.top = y + "%";
+                s.style.width = size + "px";
+                s.style.height = size + "px";
+                s.style.opacity = (0.5 + Math.random() * 0.5).toFixed(2);
+                const p = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+                p.setAttribute("points", starPoints);
+                p.setAttribute("fill", colors[Math.floor(Math.random() * colors.length)]);
+                s.appendChild(p);
+                sparkleContainer.appendChild(s);
+              });
+
+              cellElement.appendChild(sparkleContainer);
+
+              const text = document.createElement("span");
+              text.innerHTML = template.freespace.replace(" ", "<br>");
+              text.style.position = "relative";
+              text.style.zIndex = "1";
+              text.style.fontSize = "0.65rem";
+              text.style.color = "#000";
+              text.style.textShadow = "0 0 3px rgba(255,255,255,0.8)";
+              cellElement.appendChild(text);
             }
 
             board.appendChild(cellElement);
