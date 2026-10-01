@@ -14,13 +14,14 @@
           display: none;
         }
       }
+      * {
+        /* Print blocked-cell colors even if "Background graphics" is off */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
       @page {
         size: letter;
         margin: 0.5in;
-      }
-      .content {
-        width: 100%;
-        height: 100%;
       }
       body {
         font-family: "Montserrat", sans-serif;
@@ -67,7 +68,10 @@
         line-height: 1.1;
         overflow: hidden;
         height: 5.15rem;
-        /* padding: 2px; */
+      }
+      .long-word {
+        /* Break very long one-word titles (e.g. "imgonnagetyouback") instead of clipping them */
+        overflow-wrap: anywhere;
       }
       .bingo-cell:nth-child(5n) {
         border-right: none;
@@ -75,10 +79,11 @@
       .bingo-cell:nth-child(n + 21) {
         border-bottom: none;
       }
-      .center-image {
-        background-image: url("free_spot.png");
-        background-size: cover;
-        background-position: center;
+      .warning {
+        background: #fff3cd;
+        border: 1px solid #c9a227;
+        padding: 4px 8px;
+        margin-top: 4px;
       }
       @media screen {
         body {
@@ -94,141 +99,34 @@
     <div class="no-print">
       <button onclick="nextTemplate()">Next Template</button>
       <button onclick="generateAllBoardsGlobal?.()">Regenerate Boards</button>
+      <span id="template-name"></span>
+      <div id="warnings"></div>
     </div>
     <div id="content"></div>
+    <script src="templates.js"></script>
     <script>
       const numBoards = 64;
-      const boardTitle = "Taylor Swift Music Bingo";
       let innerHtml = ``;
       for (let i = 0; i < numBoards; i++) {
         innerHtml += `
           <div class="container">
-            <h1>${boardTitle}</h1>
+            <h1></h1>
             <div class="bingo-board"></div>
           </div>
         `;
       }
       document.getElementById("content").innerHTML = innerHtml;
 
-      // Taylor Swift album colors
-      const taylorColors = [
-        "#1DB4A4",  // Taylor Swift (debut) - teal
-        "#C9A227",  // Fearless - gold
-        "#8B5CF6",  // Speak Now - purple
-        "#991B1B",  // Red
-        "#7DD3FC",  // 1989 - sky blue
-        "#1F2937",  // Reputation - dark
-        "#F9A8D4",  // Lover - pink
-        "#9CA3AF",  // folklore - gray
-        "#B45309",  // evermore - amber/brown
-        "#1E3A5F",  // Midnights - navy
-        "#78716C",  // TTPD - stone
-      ];
+      if (typeof templateOrder === "undefined") {
+        document.getElementById("warnings").innerHTML =
+          '<div class="warning">templates.js did not load. It is missing or has a typo (often a missing quote or comma). Check the browser console for the line number.</div>';
+        throw new Error("templates.js did not load");
+      }
 
-      const taylorRegular = {
-        title: "Taylor Swift Music Bingo",
-        freespace: "Blank Space",
-        headerColors: taylorColors,
-        items: [
-          "Teardrops On My Guitar",
-          "Should've Said No",
-          "Fearless",
-          "Breathe",
-          "The Way I Loved You",
-          "Forever & Always",
-          "Back to December",
-          "Mine",
-          "Speak Now",
-          "The Moment I Knew",
-          "Begin Again",
-          "Come Back...Be Here",
-          "Style",
-          "Clean",
-          "Don't Blame Me",
-          "This Is Why We Can't Have Nice Things",
-          "Look What You Made Me Do",
-          "Gorgeous",
-          "I Forgot That You Existed",
-          "London Boy",
-          "Daylight",
-          "Cornelia Street",
-          "The 1",
-          "August",
-          "Invisible String",
-          "My Tears Ricochet",
-          "'Tis The Damn Season",
-          "Evermore",
-          "Maroon",
-          "Karma",
-          "Paris",
-          "Question…?",
-          "The Black Dog",
-          "The Tortured Poets Department",
-          "Guilty as Sin?",
-          "But Daddy I Love Him",
-          "imgonnagetyouback",
-          "The Fate of Ophelia",
-          "Elizabeth Taylor",
-          "Father Figure",
-          "Ruin The Friendship",
-        ],
-      };
-
-      const taylor13 = {
-        title: "Taylor Swift Music Bingo",
-        freespace: "Blank Space",
-        headerColors: ["#1E3A5F"],
-        blockedCellColors: [
-          "#BDCFB7", "#E8C490", "#BEA7C4", "#6D3D46", "#C2E2F4",
-          "#EAB4CC", "#CC9D83",
-        ],
-        pattern: "13",
-        items: [
-          "You All Over Me",
-          "Mr. Perfectly Fine",
-          "We Were Happy",
-          "That's When",
-          "Don't You",
-          "Bye Bye Baby",
-          "If This was A Movie",
-          "Crazier",
-          "Electric Touch",
-          "When Emma Falls in Love",
-          "Castles Crumbling",
-          "Foolish One",
-          "Timeless",
-          "Better Man",
-          "Nothing New",
-          "Babe",
-          "Message In a Bottle",
-          "I Bet You Think About Me",
-          "Forever Winter",
-          "Run",
-          "The Very First Night",
-          "All Too Well",
-          "Is It Over Now?",
-          '"Slut!"',
-          "Say Don't Go",
-          "Now That We Don't Talk",
-          "Suburban Legends",
-          "Safe & Sound",
-          "Carolina",
-          "Macavity",
-          "Beautiful Ghosts",
-          "Ronan",
-          "Sweeter Than Fiction",
-          "Christmas Tree Farm",
-          "You're Losing Me",
-          "All Of The Girls You Loved Before",
-          "I Can See You",
-        ],
-      };
-
-      const templateOrder = [taylorRegular, taylor13];
-      const lastTemplate = localStorage.getItem("lastTemplate");
-      let template = templateOrder.find(t => t.title === lastTemplate) ?? taylorRegular;
+      const lastTemplateId = localStorage.getItem("lastTemplate");
+      let template =
+        templateOrder.find((t) => t.id === lastTemplateId) ?? templateOrder[0];
       let generateAllBoardsGlobal;
-
 
       function nextTemplate() {
         template =
@@ -236,7 +134,7 @@
             (templateOrder.indexOf(template) + 1) % templateOrder.length
           ];
         applyTemplate();
-        localStorage.setItem("lastTemplate", template.title);
+        localStorage.setItem("lastTemplate", template.id);
       }
 
       function applyTemplate() {
@@ -266,6 +164,10 @@
         // Select pattern based on template
         const pattern = template.pattern === "13" ? pattern13 : patternStandard;
 
+        document.getElementById("template-name").textContent =
+          `Template: ${template.name} (${templateOrder.indexOf(template) + 1} of ${templateOrder.length})`;
+        showWarnings(pattern.filter((cell) => cell === "O").length);
+
         const headerColors = template.headerColors ?? ["#000000"];
 
         Array.from(document.getElementsByTagName("h1")).forEach(
@@ -277,21 +179,6 @@
         let songUsageCount = {};
         let songPositionCount = {};
         let lastBoardSongs = new Set();
-        let colorIdx = 0;
-
-        function getColor(item) {
-          // if (things.commercials.includes(item)) {
-          //   // Returns a blue color
-          //   return "#B3E5FC";
-          // } else if (things.football.includes(item)) {
-          //   // Returns a green color
-          //   return "#C8E6C9";
-          // } else if (things.celebrity.includes(item)) {
-          //   // Returns a purple color
-          //   return "#FFF9C4";
-          // }
-          return "#FFFFFF";
-        }
 
         function getWeightedRandomSong(availableSongs, position) {
           const totalWeight = availableSongs.reduce((sum, song) => {
@@ -342,8 +229,9 @@
               availableSongs.splice(songIndex, 1);
 
               cellElement.textContent = song;
-              // cellElement.style.backgroundColor = "white";
-              cellElement.style.backgroundColor = getColor(song);
+              if (song.split(/\s+/).some((word) => word.length > 12)) {
+                cellElement.classList.add("long-word");
+              }
 
               newBoardSongs.add(song);
               songUsageCount[song] = (songUsageCount[song] || 0) + 1;
@@ -390,7 +278,7 @@
               cellElement.appendChild(sparkleContainer);
 
               const text = document.createElement("span");
-              text.innerHTML = template.freespace.replace(" ", "<br>");
+              text.textContent = template.freespace.replace(" ", "\n");
               text.style.position = "relative";
               text.style.zIndex = "1";
               text.style.fontSize = "0.65rem";
@@ -414,6 +302,37 @@
 
         // Generate initial boards
         generateAllBoards();
+      }
+
+      // On-screen (never printed) checks for common mistakes in templates.js
+      function showWarnings(songsPerBoard) {
+        const warnings = [];
+        const seen = new Set();
+        const duplicates = new Set();
+        template.items.forEach((song) => {
+          const key = song.trim().toLowerCase();
+          if (seen.has(key)) duplicates.add(song);
+          seen.add(key);
+        });
+        if (seen.size < songsPerBoard) {
+          warnings.push(
+            `This template has ${seen.size} different songs but each board needs ${songsPerBoard}. Add more songs.`
+          );
+        }
+        if (duplicates.size > 0) {
+          warnings.push(`Listed more than once: ${[...duplicates].join(", ")}`);
+        }
+        if (seen.has(template.freespace.trim().toLowerCase())) {
+          warnings.push(`"${template.freespace}" is both the free space and a song.`);
+        }
+        const box = document.getElementById("warnings");
+        box.innerHTML = "";
+        warnings.forEach((message) => {
+          const div = document.createElement("div");
+          div.className = "warning";
+          div.textContent = message;
+          box.appendChild(div);
+        });
       }
 
       // Add keyboard event listener

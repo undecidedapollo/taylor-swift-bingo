@@ -108,7 +108,7 @@ function runSimulation(numBoards, numEvaluations) {
     const results = [];
 
     for (let i = 0; i < numEvaluations; i++) {
-        if (i % 100 === 0) console.log(`Completed ${i + 100} of ${numEvaluations} evaluations`);
+        if (i % 100 === 0) console.log(`Completed ${i} of ${numEvaluations} evaluations`);
         const boards = generateBoards(numBoards);
         // boards.forEach(board => console.log(board.join(' ')));
         const result = simulateBingo(boards);
@@ -174,8 +174,8 @@ function main() {
 
     // Write results to a file
     const outputData = `Number of boards: ${numBoards}\nNumber of evaluations: ${numEvaluations}\n\nAverage: ${stats.average}\nMedian: ${stats.median}\n75th Percentile: ${stats.p75}\n`;
-    fs.writeFileSync('bingo_stats.txt', outputData);
-    console.log('\nResults have been written to bingo_stats.txt');
+    fs.writeFileSync(require('path').join(__dirname, 'simulate_stats.txt'), outputData);
+    console.log('\nResults have been written to simulate_stats.txt');
 }
 
 main();
