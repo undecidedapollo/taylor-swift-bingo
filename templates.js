@@ -9,24 +9,25 @@
 //   items             (required) the songs; no duplicates. Standard boards need 24+, "13" boards need 15+.
 //                     Around twice that is best so neighboring boards don't share songs.
 //   headerColors      (optional) heading colors; each board picks one at random. Default black.
-//   pattern           (optional) "13" blocks out cells in a "13" shape. Default is a full 5x5 board.
-//   blockedCellColors (optional) colors for blocked cells in the "13" pattern; one per board at random.
+//   pattern           (optional) "13" blocks out cells in a "13" shape; "heart" blocks out a heart outline.
+//                     Default is a full 5x5 board.
+//   blockedCellColors (optional) colors for blocked cells in the "13" or "heart" pattern; one per board at random.
 //
 // To add a template, copy one below, give it a new id/name, and add it to templateOrder at the bottom.
 
 // Taylor Swift album colors
 const taylorColors = [
-  "#1DB4A4",  // Taylor Swift (debut) - teal
-  "#C9A227",  // Fearless - gold
-  "#8B5CF6",  // Speak Now - purple
-  "#991B1B",  // Red
-  "#7DD3FC",  // 1989 - sky blue
-  "#1F2937",  // Reputation - dark
-  "#F9A8D4",  // Lover - pink
-  "#9CA3AF",  // folklore - gray
-  "#B45309",  // evermore - amber/brown
-  "#1E3A5F",  // Midnights - navy
-  "#78716C",  // TTPD - stone
+  "#1DB4A4", // Taylor Swift (debut) - teal
+  "#C9A227", // Fearless - gold
+  "#8B5CF6", // Speak Now - purple
+  "#991B1B", // Red
+  "#7DD3FC", // 1989 - sky blue
+  "#1F2937", // Reputation - dark
+  "#F9A8D4", // Lover - pink
+  "#9CA3AF", // folklore - gray
+  "#B45309", // evermore - amber/brown
+  "#1E3A5F", // Midnights - navy
+  "#78716C", // TTPD - stone
 ];
 
 const taylorRegular = {
@@ -87,8 +88,13 @@ const taylor13 = {
   freespace: "Blank Space",
   headerColors: ["#1E3A5F"],
   blockedCellColors: [
-    "#BDCFB7", "#E8C490", "#BEA7C4", "#6D3D46", "#C2E2F4",
-    "#EAB4CC", "#CC9D83",
+    "#BDCFB7",
+    "#E8C490",
+    "#BEA7C4",
+    "#6D3D46",
+    "#C2E2F4",
+    "#EAB4CC",
+    "#CC9D83",
   ],
   pattern: "13",
   items: [
@@ -132,5 +138,150 @@ const taylor13 = {
   ],
 };
 
+const taylorRegular2026 = {
+  id: "regular-2026",
+  name: "Regular (2026)",
+  title: "Taylor Swift Music Bingo",
+  freespace: "Blank Space",
+  headerColors: taylorColors,
+  items: [
+    "Call It What You Want",
+    "Opalite",
+    "Hits Different",
+    "The Fate of Ophelia",
+    "I Knew It, I Knew You",
+    "Style",
+    "Come Back...Be Here",
+    "The Man",
+    "False God",
+    "Dancing With Our Hands Tied",
+    "King Of My Heart",
+    "Pink Clouding",
+    "The Very First Time",
+    "Don't Blame Me",
+    "Fortnight",
+    "The Last Great American Dynasty",
+    "TTPD",
+    "Getaway Car",
+    "Bejeweled",
+    "August",
+    "Father Figure",
+    "Cancelled!",
+    "Lover",
+    "Anti-Hero",
+    "The 1",
+    "Carolina",
+    "State of Grace",
+    "Back to December",
+    "Bigger Than The Whole Sky",
+    "All Of The Girls You Loved Before",
+    "The Way I Loved You",
+    "Bad Blood",
+    "Karma",
+  ],
+};
+
+const taylor13_2026 = {
+  id: "13-2026",
+  name: "13 (2026)",
+  title: "Taylor Swift Music Bingo",
+  freespace: "Blank Space",
+  headerColors: ["#1E3A5F"],
+  blockedCellColors: [
+    "#BDCFB7",
+    "#E8C490",
+    "#BEA7C4",
+    "#6D3D46",
+    "#C2E2F4",
+    "#EAB4CC",
+    "#CC9D83",
+  ],
+  pattern: "13",
+  items: [
+    '"Slut!"',
+    "Willow",
+    "Change",
+    "Foolish One",
+    "Invisible String",
+    "All Too Well",
+    "Mine",
+    "If This Was A Movie",
+    "Mastermind",
+    "Vigilante Shit",
+    "Question…?",
+    "Ours",
+    "Betty",
+    "Mary's Song",
+    "Sparks Fly",
+    "Safe & Sound",
+    "You're Losing Me",
+    "The Outside",
+    "Say Don't Go",
+    "Afterglow",
+    "Maroon",
+    "Peter",
+    "Now That We Don't Talk",
+    "Teardrops On My Guitar",
+    "Treacherous",
+    "Mr. Perfectly Fine",
+    "I Can Do It With a Broken Heart",
+    "Death By a Thousand Cuts",
+    "Clean",
+    "Long Live",
+    "Forever & Always",
+    "Paris",
+    "Who's Afraid of Little Old Me?",
+    "Elizabeth Taylor",
+    "Our Song",
+  ],
+};
+
+const heart2026 = {
+  id: "heart-2026",
+  name: "Heart (2026)",
+  title: "Taylor Swift Music Bingo",
+  freespace: "Blank Space",
+  headerColors: taylorColors,
+  pattern: "heart",
+  blockedCellColors: ["#E11D48", "#F472B6", "#BE123C", "#F9A8D4"],
+  items: [
+    "Marjorie",
+    "Down Bad",
+    "This Is Why We Can't Have Nice Things",
+    "Cleveland!",
+    "The Moment I Knew",
+    "Jump Then Fall",
+    "When Emma Falls in Love",
+    "White Horse",
+    "Fifteen",
+    "Macavity",
+    "Enchanted",
+    "Suburban Legends",
+    "Cardigan",
+    "Delicate",
+    "Midnight Rain",
+    "The Albatross",
+    "Cruel Summer",
+    "Timeless",
+    "Castles Crumbling",
+    "Picture To Burn",
+    "Christmas Tree Farm",
+    "Daylight",
+    "The Smallest Man Who Ever Lived",
+    "Speak Now",
+    "Begin Again",
+    "Wonderland",
+    "Fearless",
+    "Patient Zero",
+    "Babylon",
+    "...Ready For It?",
+    "I'm Only Me When I'm With You",
+    "Clara Bow",
+    "Sweeter Than Fiction",
+    "London Boy",
+    "New Year's Day",
+  ],
+};
+
 // "Next Template" cycles through these in order. The first one is the default.
-const templateOrder = [taylorRegular, taylor13];
+const templateOrder = [taylorRegular, taylor13, taylorRegular2026, taylor13_2026, heart2026];

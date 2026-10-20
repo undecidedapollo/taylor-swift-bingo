@@ -161,8 +161,18 @@
           "O", "X", "O", "O", "O",
         ];
 
+        // Heart pattern (blocked cells form a heart outline)
+        const patternHeart = [
+          "O", "X", "O", "X", "O",
+          "X", "O", "X", "O", "X",
+          "X", "O", "I", "O", "X",
+          "O", "X", "O", "X", "O",
+          "O", "O", "X", "O", "O",
+        ];
+
         // Select pattern based on template
-        const pattern = template.pattern === "13" ? pattern13 : patternStandard;
+        const patterns = { "13": pattern13, heart: patternHeart };
+        const pattern = patterns[template.pattern] ?? patternStandard;
 
         document.getElementById("template-name").textContent =
           `Template: ${template.name} (${templateOrder.indexOf(template) + 1} of ${templateOrder.length})`;
